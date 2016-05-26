@@ -1,0 +1,149 @@
+
+<FindbugsPlugin xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="findbugsplugin.xsd" pluginid="edu.umd.cs.findbugs.pluginTutorial"
+	provider="FindBugs Tutorial" website="http://findbugs.sourceforge.net">
+
+	<!-- <Detector class="AiExtend.ForbiddenSystemClass" reports="System_Out_Err_BUG" 
+		/> <BugPattern type="AIEXTEND_BUG" abbrev="TU" category="CORRECTNESS"/> -->
+
+	<Detector class="AiExtend.ForbiddenSystemClass" speed="fast"
+		reports="System_Out_Err_BUG" hidden="false" />
+
+
+	<Detector class="AiExtend.ForbiddenMainMethod" speed="fast"
+		reports="Main_Method_BUG" hidden="false" />
+
+
+	<Detector class="AiExtend.AiSvMethod" speed="fast" 
+	    reports="SV_EXCEPTION_BUG,SV_INTERFACE_BUG,SV_ATTRIBUTE_BUG,SV_CLINIT_BUG"
+		hidden="false" />
+
+
+
+	<Detector class="AiExtend.LoggingClass" speed="fast"
+		reports="UNPROTECTED_LOGGING,LIMIT_LOG_METHOD" hidden="false" />
+
+	<Detector class="AiExtend.DBConnectionClass" speed="fast"
+		reports="JDBC_INVOKE_ERROR,NO_BO_JDBC,JDBC_STATEMENT,NO_BO_JDBC_EXE"
+		hidden="false" />
+
+	<Detector class="AiExtend.CrossCenterServiceCheck" speed="fast"
+		reports="CROSS_CENTER_BUG,DB_CROSS_BUG" hidden="false" />
+
+
+
+	<Detector class="AiExtend.GetSession" speed="fast" reports="GET_SESSION"
+		hidden="false" />
+
+
+	<Detector class="AiExtend.AiCacheMethod" speed="fast"
+		reports="CACHE_EXCEPTION_BUG,CACHE_EXTENDS_BUG" hidden="false" />
+
+
+
+	<Detector class="AiExtend.PackageInvokeCheck" speed="fast"
+		reports="INVOKE_DAO_BO,INVOKE_CACHE_DAO,INVOKE_DAO_DAO,INVOKE_CACHE_OUTPACK,INVOKE_CACHE_BO_ERR,INVOKE_ACT_DAO,INVOKE_ACT_OUTPACK,INVOKE_ACT_BO_ERR,INVOKE_DAO_WEB_SV,INVOKE_SV_WEB,INVOKE_SV_OUTPACK,INVOKE_SV_BO_ERROR"
+		hidden="false" />
+
+	<Detector class="AiExtend.ForbiddenCommitRollbackClass" speed="fast"
+		reports="DB_COMMIT_ROLLBACK" hidden="false" />
+
+	<Detector class="AiExtend.ForbiddenChineseMethod" speed="fast"
+		reports="CHINESE_ERROR" hidden="false" />
+
+	<Detector class="AiExtend.AiDaoMethod" speed="fast"
+		reports="DAO_ATTRIBUTE_BUG,DAO_CLINIT_BUG" hidden="false" />
+
+
+	<Detector class="AiExtend.ExceptionCheck" speed="fast"
+		reports="CHINESE_EXCEPTION_ERROR" hidden="false" />
+
+
+	<BugPattern abbrev="CHINESE_EXCEPTION_ERROR" type="CHINESE_EXCEPTION_ERROR"
+		category="CORRECTNESS" />
+		
+	<BugPattern abbrev="DAO_ERROR" type="DAO_ATTRIBUTE_BUG"
+		category="CORRECTNESS" />
+		
+	<BugPattern abbrev="DAO_ERROR" type="DAO_CLINIT_BUG"
+		category="CORRECTNESS" />	
+
+	<BugPattern abbrev="CHINESE_ERROR" type="CHINESE_ERROR"
+		category="CORRECTNESS" />
+
+
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_DAO_DAO"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_DAO_BO"
+		category="CORRECTNESS" />	
+		
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_CACHE_OUTPACK"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_CACHE_BO_ERR"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_ACT_DAO"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_ACT_OUTPACK"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_ACT_BO_ERR"
+		category="CORRECTNESS" />
+		
+		
+		
+
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_DAO_WEB_SV"
+		category="CORRECTNESS" />
+	<!-- <BugPattern abbrev="AIPACKAGE" type="INVOKE_DAO_OUTPACK" category="CORRECTNESS" 
+		/> -->
+
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_SV_WEB"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_SV_OUTPACK"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_SV_BO_ERROR"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AIPACKAGE" type="INVOKE_CACHE_DAO"
+		category="CORRECTNESS" />
+
+
+
+
+
+
+	<BugPattern abbrev="AICACHE" type="CACHE_EXCEPTION_BUG"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="AICACHE" type="CACHE_EXTENDS_BUG"
+		category="CORRECTNESS" />
+
+
+
+
+	<BugPattern abbrev="GESE" type="GET_SESSION" category="CORRECTNESS" />
+
+
+	<BugPattern abbrev="CRCE" type="CROSS_CENTER_BUG" category="CORRECTNESS" />
+	<BugPattern abbrev="DBCR" type="DB_CROSS_BUG" category="CORRECTNESS" />
+
+	<BugPattern abbrev="SYS" type="System_Out_Err_BUG" category="BAD_PRACTICE" />
+	<BugPattern abbrev="MAIN" type="Main_Method_BUG" category="BAD_PRACTICE" />
+	<BugPattern abbrev="SVEX" type="SV_EXCEPTION_BUG" category="CORRECTNESS" />
+	
+	<BugPattern abbrev="SVEX" type="SV_INTERFACE_BUG" category="CORRECTNESS" />
+	
+	<BugPattern abbrev="SVEX" type="SV_ATTRIBUTE_BUG" category="CORRECTNESS" />
+	<BugPattern abbrev="SVEX" type="SV_CLINIT_BUG" category="CORRECTNESS" />
+	
+	
+	<BugPattern abbrev="LOG4J" type="UNPROTECTED_LOGGING"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="LOG4J" type="LIMIT_LOG_METHOD" category="CORRECTNESS" />
+	<!-- <BugPattern abbrev="JDCA" type="JDBC_CREATE_ERROR" category="CORRECTNESS" 
+		/> -->
+	<BugPattern abbrev="JDBC" type="JDBC_INVOKE_ERROR" category="CORRECTNESS" />
+	<BugPattern abbrev="JDBC" type="DB_COMMIT_ROLLBACK"
+		category="CORRECTNESS" />
+	<BugPattern abbrev="JDBC" type="NO_BO_JDBC_EXE" category="CORRECTNESS" />
+	<BugPattern abbrev="JDBC" type="JDBC_STATEMENT" category="CORRECTNESS" />
+	<BugPattern abbrev="JDBC" type="NO_BO_JDBC" category="CORRECTNESS" />
+
+</FindbugsPlugin>

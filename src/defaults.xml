@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="gb2312"?>
+<!--
+全局默认配置信息
+-->
+<defaults>
+
+    <!--中心的类型和实现类的对应关系-->
+    <center>
+        <property name="BillId:KeyNum" value="com.ai.common.center.BillIdCenterImpl"/>
+        <property name="AcctId" value="com.ai.common.center.AcctIdCenterImpl"/>
+       	<property name="CustId:CUSTOMER_ID" value="com.ai.common.center.CustIdCenterImpl"/> -->
+        <property name="UserId" value="com.ai.common.center.UserIdCenterImpl"/>
+        <property name="RegionId" value="com.ai.common.center.RegionIdCenterImpl"/>
+        <property name="OrderCode" value="com.ai.common.center.OrderCodeCenterImpl"/>
+        <property name="OrderId" value="com.ai.common.center.OrderIdCenterImpl"/>
+        <property name="VpmnGroupId" value="com.ai.common.center.VpmnGroupIdCenterImpl"/>
+        <property name="PaymentId " value="com.ai.common.center.PaymentIdCenterImpl "/> 
+    </center>
+
+    <!--默认代理调用方式.默认采用pojo的模式进行调用，采用的实现类为配置的实现类-->
+    <proxy invoke="pojo" type="primitive">
+        <clazz name="com.ai.appframe2.complex.service.impl.LocalServiceInvokeImpl"/>
+    </proxy>
+
+    <!--默认事务信息.默认采用Required的方式进行事务操作，采用的实现类为配置的实现类-->
+    <transaction type="Required">
+        <!--<clazz name="com.ai.appframe2.complex.transaction.impl.LocalTransactionImpl"/>-->
+        <clazz name="com.ai.appframe2.complex.transaction.impl.LocalMutilTransactionImpl"/>
+        <!--<listener name="com.ai.appframe2.complex.transaction.listener.TestListenerImpl"/>-->
+        <!--映射每个服务模块对应的事务数据源，可以具体到类名-->
+        <!-- Omframe事务监听类，用于清除线程变量 -->
+        <!-- <listener name="com.ai.omframe.util.OmTransactionListenerImpl"/>-->
+
+        <mapping>
+
+			<property name="com.asiainfo.crm.ams" value="ams{CENTER}"/>
+			<property name="com.asiainfo.crm.ams.common.base" value="base"/>
+            <!-- 客户管理 -->
+            <property name="com.asiainfo.crm.cm" value="party"/>
+
+            <!--平台自带-->
+            <property name="com.ai.appframe2.complex.self.service.base" value="base"/>
+            <property name="com.ai.appframe2.complex.self.service.check" value="base"/>
+            <property name="com.ai.comframe.config" value="base"/>
+            <property name="com.ai.comframe.client" value="base"/>
+            <property name="com.ai.comframe.autoform" value="base"/>
+
+
+            <!--平台扩展-->
+            <property name="com.asiainfo.appframe.ext.exeframe" value="base"/>
+            <property name="com.ai.common" value="base"/>
+
+            <!--secframe-->
+            <!--<property name="com.ai.secframe" value="sec"/>-->
+            <!--<property name="com.ai.frame" value="sec"/>-->
+            
+            <!--orgmodel-->
+      			<property name="com.ai.secframe.orgmodel" value="sec"/>
+      			<property name="com.ai.secframe.extend" value="sec"/>
+       			<!--secframe-->
+      			<property name="com.ai.secframe.sysmgr" value="sec"/>
+      			<property name="com.ai.secframe.model" value="sec"/>
+      			<property name="com.ai.secframe.common" value="sec"/>
+
+            <!--gbord-->
+            <property name="com.asiainfo.crm.so.order.bboss.gbord" value="bboss2"/>
+
+
+
+
+            <property name="com.asiainfo.crm.report.dataextract.exe.tf.business" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.report.dataextract.exe.tf.res" value="res"/>
+            <property name="com.asiainfo.crm.report.dataextract.exe.task.res" value="res"/>
+            <property name="com.asiainfo.crm.report.dataextract.exe.task.business" value="so{CENTER}"/>
+            
+            <property name="com.asiainfo.crm.report.dataextract.source.business" value="so{CENTER}"/>
+
+
+            <!--渠道-->
+            <property name="com.asiainfo.crm.channel" value="channel"/>
+
+            <!--虚产品-->
+            <property name="com.asiainfo.crm.so.channel.virtualproduct.conf" value="base"/>
+            <property name="com.asiainfo.crm.so.channel.virtualproduct.sale" value="so{CENTER}"/>
+
+            <!-- 接口 -->
+            <property name="com.asiainfo.crm.inter" value="base"/>
+
+            <property name="com.asiainfo.crm.so.dsp" value="so{CENTER}"/>
+            
+
+            <!-- 开通接口 -->
+            <property name="com.asiainfo.crm.open.base" value="base"/>
+            <property name="com.asiainfo.crm.open" value="so{CENTER}"/>
+
+            <property name="com.asiainfo.crm.score.party" value="party"/>
+
+            <property name="com.asiainfo.crm.example.so" value="so{CENTER}"/>
+
+            <property name="com.asiainfo.crm.ams.bibill" value="bboss2"/>
+
+            <!--crm业务配置-->
+            <property name="com.ai.common.service.base" value="base"/>
+            <property name="com.asiainfo.crm.so.order.dsmp.comm" value="base"/>
+            <property name="com.asiainfo.crm.so.order.dsmp.t12580" value="party"/>
+            <property name="com.asiainfo.crm.so.order.dsmp.dm" value="party"/>
+            <property name="com.asiainfo.crm.so.instance.dsmp.party" value="party"/>
+            <property name="com.asiainfo.crm.inter" value="base"/>
+            <property name="com.asiainfo.crm.inter.sms" value="so{CENTER}"/>
+            <property name="com.ai.bce" value="base"/>
+            <property name="com.ai.omframe" value="base"/>
+            <property name="com.ai.omframe.order" value="so{CENTER}"/>
+            <property name="com.ai.omframe.instance" value="so{CENTER}"/>
+            <property name="com.ai.pce" value="product"/>
+            <property name="com.asiainfo.crm" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.common" value="base"/>
+            <property name="com.asiainfo.crm.so.common.base" value="base"/>
+            <property name="com.asiainfo.crm.so.common.bboss" value="party"/>
+            <property name="com.asiainfo.crm.soorder.bboss.soap.soapinfo.bulletin" value="party"/>
+ 			<!-- 营销管理 -->
+      		<property name="com.asiainfo.crm.ssm" value="ssm"/>
+
+            <!-- 资源管理 -->
+            <property name="com.ai.common.service.res" value="res"/>
+            <property name="com.asiainfo.crm.res" value="res"/>
+            <property name="com.asiainfo.crm.res.paycard" value="res"/>
+            <property name="com.asiainfo.crm.res.terminal" value="res"/>
+            <property name="com.asiainfo.crm.res.phone" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.res.simcard" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.res.goods" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.res.invoice" value="so{CENTER}"/>
+
+
+            <property name="com.asiainfo.crm.sec" value="sec"/>
+            <!--计费帐务-->
+            <property name="com.asiainfo.crm.inter.outdata.common" value="base"/>
+            <property name="com.asiainfo.crm.inter.outdata.boss" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.inter.outdata.process" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.inter.outdata.exe" value="so{CENTER}"/>
+
+            <property name="com.asiainfo.crm.so.ams" value="ams{CENTER}"/>
+            
+            <!--新融合框架需要使用的数据源配置-->
+			<property name="com.ai.oneframe" value="base"/>
+			
+
+
+        </mapping>
+    </transaction>
+
+    <!--默认数据源信息-->
+    <datasource>
+        <clazz name="com.ai.appframe2.complex.datasource.impl.LocalMutilDataSourceImpl">
+            <property name="tableName" value="cfg_db_acct"/>
+        </clazz>
+
+        <!--根据base取数据库配置，然后以本配置中的覆盖除base以外的连接池的配置-->
+        <!--默认 type=dbcp  db=oracle -->
+        <pool name="base" primary="true">
+            <property name="driverClassName" value="oracle.jdbc.OracleDriver"/>
+
+            <!-- 开发库
+          <property name="url" value="jdbc:oracle:thin:@10.70.193.15:2001:zjfsdev"/>
+          <property name="username" value="base"/>
+          <property name="password" value="{RC2}bFmf3Q=="/> -->
+
+
+            <!-- 测试库  -->
+            <property name="url" value="jdbc:oracle:thin:@10.11.20.81:1521:njdev81"/>
+            <property name="username" value="base"/>
+            <property name="password" value="base678asd"/>
+
+
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+        </pool>
+
+        <pool name="product" init="true">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+
+        <pool name="so1" init="true" template="so{CENTER}">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+
+        <pool name="so2" init="true" template="so{CENTER}">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+        
+        <pool name="ams1" init="true" template="ams{CENTER}">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+
+        <pool name="ams2" init="true" template="ams{CENTER}">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+
+        <pool name="res" init="true">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+
+        <pool name="sec" init="true">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+
+        <pool name="party" init="true">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+
+        <pool name="comframe" init="true">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+
+        <pool name="sc" init="true">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+        
+        <pool name="bboss2" init="true">
+            <property name="initialSize" value="0"/>
+            <property name="maxActive" value="2"/>
+            <property name="maxIdle" value="2"/>
+            <property name="maxWait" value="2000"/>
+        </pool>
+        
+        <!-- 营销管理数据源 -->
+	    <pool name="ssm" init="true">
+	       <property name="initialSize" value="0"/>
+	       <property name="maxActive" value="2"/>
+	       <property name="maxIdle" value="2"/>
+	       <property name="maxWait" value="2000"/>
+	    </pool>
+
+        <!--映射每个DAO模块对应的操作数据源-->
+        <mapping>
+
+            <!--平台自带-->
+            <property name="com.ai.appframe2.complex.self.dao.base" value="base"/>
+            <property name="com.ai.appframe2.complex.self.service.check" value="base"/>
+            <property name="com.ai.comframe.config" value="base"/>
+            <property name="com.ai.comframe.client" value="base"/>
+            <property name="com.ai.comframe.autoform" value="base"/>
+
+
+            <!--平台扩展-->
+            <property name="com.asiainfo.appframe.ext.exeframe" value="base"/>
+            <property name="com.ai.common" value="base"/>
+
+            <!--secframe-->
+            <!--<property name="com.ai.secframe" value="sec"/>-->
+            <!--<property name="com.ai.frame" value="sec"/>-->
+            
+            <!--orgmodel-->
+      			<property name="com.ai.secframe.orgmodel" value="sec"/>
+      			<property name="com.ai.secframe.extend" value="sec"/>
+      			<!--secframe-->
+      			<property name="com.ai.secframe.sysmgr" value="sec"/>
+      			<property name="com.ai.secframe.model" value="sec"/>
+      			<property name="com.ai.secframe.common" value="sec"/>
+            
+            <!-- 客户管理 -->
+            <property name="com.asiainfo.crm.cm" value="party"/>
+            <property name="com.asiainfo.crm.ams" value="ams{CENTER}"/>
+            <property name="com.asiainfo.crm.ams.common.base" value="base"/>
+
+            <!--crm业务配置-->
+            <property name="com.ai.common.dao.base" value="base"/>
+            
+            <!-- 资源管理 -->
+            <property name="com.ai.common.dao.res" value="res"/>
+            <property name="com.asiainfo.crm.res" value="res"/>
+            <property name="com.asiainfo.crm.res.paycard" value="res"/>
+            <property name="com.asiainfo.crm.res.terminal" value="res"/>
+            <property name="com.asiainfo.crm.res.goods" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.res.invoice" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.res.phone" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.res.simcard" value="so{CENTER}"/>
+
+            <property name="com.asiainfo.crm.so.order.bboss.gbord" value="bboss2"/>
+
+            <property name="com.asiainfo.crm.score.party" value="party"/>
+
+            <property name="com.asiainfo.crm.example.so" value="so{CENTER}"/>
+
+            <property name="com.asiainfo.crm.ams.bibill" value="bboss2"/>
+
+            <property name="com.asiainfo.crm.so.order.dsmp.t12580" value="party"/>
+            <property name="com.asiainfo.crm.so.order.dsmp.dm" value="party"/>
+            <property name="com.asiainfo.crm.so.instance.dsmp.party" value="party"/>
+
+            <property name="com.asiainfo.crm.inter" value="base"/>
+            <property name="com.asiainfo.crm.inter.sms" value="so{CENTER}"/>
+            <property name="com.ai.bce" value="base"/>
+            <property name="com.ai.omframe" value="base"/>
+            <property name="com.ai.omframe.order" value="so{CENTER}"/>
+            <property name="com.ai.omframe.instance" value="so{CENTER}"/>
+            <property name="com.ai.pce" value="product"/>
+
+            <property name="com.asiainfo.crm" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.common" value="base"/>
+
+            <property name="com.asiainfo.crm.so.common.base" value="base"/>
+            <property name="com.asiainfo.crm.so.common.bboss" value="party"/>
+            <property name="com.asiainfo.crm.soorder.bboss.soap.soapinfo.bulletin" value="party"/>
+            <!-- 营销管理 -->
+     		<property name="com.asiainfo.crm.ssm" value="ssm"/>
+
+
+
+
+
+
+            <!--综合查询-->
+
+            <property name="com.asiainfo.crm.open.base" value="base"/>
+            <property name="com.asiainfo.crm.open" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.open.frame.table.hangbancboss" value="so{CENTER}"/>
+
+
+            <property name="com.asiainfo.crm.sec" value="sec"/>
+
+            <!--计费帐务-->
+            <property name="com.asiainfo.crm.inter.outdata.common" value="base"/>
+            <property name="com.asiainfo.crm.inter.outdata.boss" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.inter.outdata.process" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.inter.outdata.billing" value="so{CENTER}"/>
+            <property name="com.asiainfo.crm.inter.outdata.exe" value="so{CENTER}"/>
+
+			<!-- 帐务用，指向base库表 -->
+			<property name="com.asiainfo.crm.ams.common.base" value="base"/>
+
+            <!--开通DAO-->
+            <property name="com.asiainfo.crm.so.dsp" value="so{CENTER}"/>
+
+            
+            <!--新融合框架需要使用的数据源配置-->
+			<property name="com.ai.oneframe" value="base"/>
+
+
+        </mapping>
+    </datasource>
+
+    <!--包含的服务配置文件-->
+
+    <!--平台-->
+    <include type="sv" classpath="system/service/appframe-service.xml"/>
+    　　 <!-- 受理 -->
+    <include type="sv" classpath="com/ai/bce/bce-service.xml"/>
+    <include type="sv" classpath="system/service/omframe-service.xml"/>
+
+    <!--权限-->
+    <!--<include type="sv" classpath="system/service/secframe-service.xml"/>-->
+
+
+</defaults>

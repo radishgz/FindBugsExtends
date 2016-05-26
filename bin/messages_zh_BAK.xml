@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="GBK"?>
+<MessageCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="messagecollection.xsd">
+
+	<Plugin>
+		<ShortDescription>AIEXTEND Plugin</ShortDescription>
+		<Details>Provides AIEXTEND detectors as part of the FindBugs detector
+			plugin
+			tutorial.</Details>
+	</Plugin>
+
+	<Detector class="AiExtend.ForbiddenSystemClass">
+		<Details>
+			禁止使用SYSTEM.OUT/ERR.
+                </Details>
+
+	</Detector>
+
+	<BugPattern type="System_Out_Err_BUG">
+		<ShortDescription>使用了System.err或者System out</ShortDescription>
+		<LongDescription>使用了System.err或者System out,请使用log.debug代替</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>使用了System.err或者System out,请使用log.debug代替</p>
+			]]>
+		</Details>
+	</BugPattern>
+	<BugCode abbrev="AIEXTEND">禁止使用SYSTEM.OUT/ERR</BugCode>
+
+	<Detector class="AiExtend.ForbiddenMainMethod">
+		<Details>
+			禁止使用main方法.
+                </Details>
+
+	</Detector>
+
+	<BugPattern type="Main_Method_BUG">
+		<ShortDescription>禁止使用main方法</ShortDescription>
+		<LongDescription>使用了main方法，除特定后台进程外允许使用main方法，测试请使用junit类</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>使用了main方法，除特定后台进程外允许使用main方法，测试请使用junit类</p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">使用了main方法</BugCode>
+	
+	
+	
+	<Detector class="AiExtend.AiSvMethod">
+		<Details>
+			SV/SVIMPL类方法没有抛出REMOTE EXCEPTION或者EXCPETION
+                </Details>
+
+	</Detector>
+
+	<BugPattern type="SV_EXCEPTION_BUG">
+		<ShortDescription>SV/SVIMPL METHOD没有抛出REMOTE EXCEPTION</ShortDescription>
+		<LongDescription>SV/SVIMPL类方法没有抛出REMOTE EXCEPTION或者EXCPETION</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>考虑到EJB远程调用，SV/SVIMPL类方法必须抛出REMOTE EXCEPTION和EXCPETION ，如下面例子</p>
+			<p>public void edgisIUcm2TrascL(IIOpenUatmix[] aIUatmixTrascL) throws RemoteException, Exception</p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">SV/SVIMPL 方法定义错误</BugCode>
+	
+	
+	
+
+	 <Detector class="AiExtend.LoggingClass">
+		<Details>
+			LOG4J使用检查
+                </Details>
+
+	</Detector>
+
+	<BugPattern type="UNPROTECTED_LOGGING">
+		<ShortDescription>调用LOG.DEBUG错误</ShortDescription>
+		<LongDescription>在调用LOG.DEBUG之前没有使用log.isDebugEnabled方法错误</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>在调用LOG.DEBUG之前没有使用log.isDebugEnabled方法错误，标准如下：
+			if (log.isDebugEnabled()){
+    		log.debug("debuging");
+    		
+    		} 
+    	
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">调用LOG.DEBUG错误</BugCode>
+	
+	
+	<BugPattern type="LIMIT_LOG_METHOD">
+		<ShortDescription>禁止使用log.warn,fatal,trace 方法输出信息</ShortDescription>
+		<LongDescription>禁止使用log.warn,fatal,trace 方法输出信息</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>禁止使用log.warn,fatal,trace 方法输出信息</p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">不允许调用的LOG4J方法</BugCode>
+	
+	
+ 
+	<Detector class="AiExtend.DBConnectionClass">
+		<Details>
+			dbConnection调用检查
+                </Details>
+
+	</Detector>
+
+	<!-- 
+	<BugPattern type="JDBC_CREATE_ERROR">
+		<ShortDescription>dbConnection调用检查</ShortDescription>
+		<LongDescription>jdbc connect must create by com.ai.appframe2.common.Session.getConnection()</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>jdbc connect must create by com.ai.appframe2.common.Session.getConnection()</p>
+			]]>
+		</Details>
+	</BugPattern>
+	
+	
+
+	<BugCode abbrev="JDCA">dbConnection调用检查</BugCode>
+	 -->
+	
+	
+	<BugPattern type="JDBC_STATEMENT">
+		<ShortDescription>使用了 JDBC STATEMENT</ShortDescription>
+		<LongDescription>禁止使用 JDBC STATEMENT ,请使用 PreparedStatement</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>禁止使用 JDBC STATEMENT ,请使用 PreparedStatement</p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">使用了JBDC.STATEMENT</BugCode>
+	
+	<BugPattern type="JDBC_INVOKE_ERROR">
+		<ShortDescription>数据库调用错误</ShortDescription>
+		<LongDescription>只有 BO Engine 类 和 daoImpl 类可以使用数据库方法 </LongDescription>
+		<Details>
+			<![CDATA[
+			<p>只有 BO Engine 类 和 daoImpl 类可以使用数据库方法  </p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">数据库调用错误</BugCode>
+	 
+	 
+	 <BugPattern type="NO_BO_JDBC_EXE">
+		<ShortDescription>在非BO*.CLASS 调用了PreparedStatement.execute/executeUpdate/executeBatch方法 </ShortDescription>
+		<LongDescription>在非BO*.CLASS 调用了PreparedStatement.execute/executeUpdate/executeBatch方法</LongDescription>
+		<Details>
+			<![CDATA[
+			<p>在非BO*.CLASS 调用了PreparedStatement.execute/executeUpdate/executeBatch方法</p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">非BO类使用了JBDC DML函数</BugCode>
+	
+	 <BugPattern type="NO_BO_JDBC">
+		<ShortDescription>JDBC操作调用错误     </ShortDescription>
+		<LongDescription>JDBC PreparedStatement/Statement 只能由bo*engineer类调用   </LongDescription>
+		<Details>
+			<![CDATA[
+			<p>JDBC PreparedStatement/Statement 只能由 bo*engineer类调用    </p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">非BO类使用了JBDC.executeQuery</BugCode>
+	
+	
+	
+	<Detector class="AiExtend.CrossCenterServiceCheck">
+		<Details>
+		getCrossCenterService方法调用检查
+                </Details>
+
+	</Detector>
+
+
+	<BugPattern type="CROSS_CENTER_BUG">
+		<ShortDescription>getCrossCenterService方法调用错误 </ShortDescription>
+		<LongDescription>不允许SV/SVIMPL 类使用了 getCrossCenterService</LongDescription>
+		<Details>
+			<![CDATA[
+			    getCrossCenterService方法在服务内部禁止使用，必须在接口、web段或进程主程序中调用，使用方式如下：
+				boolean flag = CrossCenterStoreHelper.isSameCenter(); //判断是否同一个中心 
+				if(flag){
+							getService(); 
+				}
+				else{
+					  	getCrossCenterService();
+				}
+
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="AIEXTEND">getCrossCenterService方法调用错误</BugCode>
+	
+	
+	<BugPattern type="DB_CROSS_BUG">
+		<ShortDescription>在调用getCrossCenterService 后 直接调用 db方法 </ShortDescription>
+		<LongDescription>在调用getCrossCenterService 后 直接调用 db方法  </LongDescription>
+		<Details>
+			<![CDATA[
+			<p>在调用getCrossCenterService 后 直接调用 db方法,调用getCrossCenterService方法后，必须采用平台提供的BO*Engine.save方法保存数据，直接使用Jdbc无效，并且在保存的BOBean中需要主动设置RegionId   </p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="DBCR">在调用getCrossCenterService 后 直接调用 db方法</BugCode>
+	
+	
+	
+	<Detector class="AiExtend.GetSession">
+		<Details>
+		ServiceManager.getSession 调用检查.
+                </Details>
+
+	</Detector>
+	
+	<BugPattern type="GET_SESSION">
+		<ShortDescription>ServiceManager.getSession 调用错误</ShortDescription>
+		<LongDescription>ServiceManager.getSession 错误，请不要指定用户名   </LongDescription>
+		<Details>
+			<![CDATA[
+			<p>ServiceManager.getSession 错误，请不要指定用户名    </p>
+			]]>
+		</Details>
+	</BugPattern>
+
+	<BugCode abbrev="GESE">GET_SESSION</BugCode>
+	
+	
+</MessageCollection>
